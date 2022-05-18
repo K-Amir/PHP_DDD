@@ -23,11 +23,6 @@ $app =  $container->get(App::class);
 
 // Middlewares
 $app->addErrorMiddleware(true,true,true);
-$app->add( function ($request, $handler) {
-    $response  = $handler->handle($request);
-    $response->withAddedHeader('Content-Type', 'application/json');
-    return $response;
-});
 
 
 
