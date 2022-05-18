@@ -2,11 +2,11 @@
 
 namespace Main\Domain;
 
-interface IUserRepository
+interface IUserService
 {
     public function findAll();
     public function findOneById(string $id);
-    public function add(string $hola);
+    public function add(array $user);
     public function delete(string $id);
 
 }

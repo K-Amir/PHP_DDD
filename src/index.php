@@ -3,13 +3,9 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use DI\ContainerBuilder;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
-use Slim\Psr7\Response;
 
 
-
-
+use Main\Infrastructure\Config\Middlewares;
 use Slim\App;
 
 
@@ -23,12 +19,8 @@ $app =  $container->get(App::class);
 
 // Middlewares
 $app->addErrorMiddleware(true,true,true);
-$app->add( function ($request, $handler) {
-    $response  = $handler->handle($request);
-    $response->withAddedHeader('Content-Type', 'application/json');
-    return $response;
-});
-
+$app->addBodyParsingMiddleware();
+$app->add(fn($request, $header) => Middlewares::jsonHeaderResponse($request, $header));
 
 
 require __DIR__ . './Application/routes.php';

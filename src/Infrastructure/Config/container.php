@@ -1,8 +1,8 @@
 <?php
 
-use Main\Domain\IUserRepository;
+use Main\Domain\IUserService;
 use Main\Infrastructure\Config\MongoDbConfiguration;
-use Main\Infrastructure\UserRepository;
+use Main\Infrastructure\UserService;
 use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -14,7 +14,7 @@ return [
     },
     MongoDbConfiguration::class => DI\create(MongoDbConfiguration::class),
 
-    IUserRepository::class => DI\create(UserRepository::class)
+    IUserService::class => DI\create(UserService::class)
         ->constructor(DI\get(MongoDbConfiguration::class)),
 
 
