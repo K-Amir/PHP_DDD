@@ -36,13 +36,21 @@ class UserService implements IUserService
 
     public function delete(string $id)
     {
-        $user = $this->findOneById($id);
-        if ($user) {
-            $this->dm->remove($user);
-            $this->dm->flush();
+        try {
+            $user = $this->findOneById($id);
+            if ($user) {
+                $this->dm->remove($user);
+                $this->dm->flush();
+            }
+            return ["success" => "Deleted successfully"];
+        }catch (\Exception $ex){
+            return ["error" => "Could not find user to delete with the provided id " . $id];
         }
 
     }
+
+
+
 
     public function findOneById(string $id)
     {

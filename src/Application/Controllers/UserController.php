@@ -45,8 +45,8 @@ class UserController
     public function deleteUserById(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
-        $this->userRepository->delete($id);
-        $response->getBody()->write(json_encode(["Success" => "User deleted successfully"]));
+         $msg = $this->userRepository->delete($id);
+        $response->getBody()->write(json_encode($msg));
         return $response;
 
     }
