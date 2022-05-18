@@ -4,6 +4,11 @@
       "Main\\" : "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "require": {
     "slim/slim": "4.*",
     "slim/psr7": "^1.5",
@@ -13,5 +18,16 @@
   },
   "scripts": {
     "bootstrap" : "php -S localhost:8080 -t src src/index.php"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "jangregor/phpstan-prophecy": "^1.0",
+    "phpspec/prophecy-phpunit": "^2.0",
+    "phpstan/extension-installer": "^1.1"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": false
+    }
   }
 }
