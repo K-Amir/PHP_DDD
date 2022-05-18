@@ -1,0 +1,17 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Main\\" : "src/"
+    }
+  },
+  "require": {
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.5",
+    "php-di/slim-bridge": "^3.2",
+    "php-di/php-di": "^6.4",
+    "doctrine/mongodb-odm": "*"
+  },
+  "scripts": {
+    "bootstrap" : "php -S localhost:8080 -t src src/index.php"
+  }
+}
