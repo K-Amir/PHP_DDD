@@ -16,6 +16,9 @@ class User
     /** @ODM\Field(type="string") */
     public string $email;
 
+
+
+
     /**
      * @param string $name
      */
